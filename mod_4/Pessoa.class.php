@@ -24,4 +24,12 @@ class Pessoa {
 		return "{$this->nome} nasceu em " . $this->anoNascimento->format('d/m/Y') .
 		       " mora no endereco: " . $this->endereco . ", Telefone: " . $this->telefone;
 	}
+
+	/**
+	 * Aula 6 - Polimorfismo
+	 */
+
+	public function metodoPolimorfismo() {
+		echo "Método chamado da classe Pessoa";
+	}
 }

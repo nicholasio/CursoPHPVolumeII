@@ -20,6 +20,25 @@ final class Funcionario extends Pessoa {
 	public function __toString() {
 		return parent::__toString() . " Salário: " . $this->salario . ", Cargo: " . $this->cargo;
 	}
+
+	/**
+	 * Aula 6 - Polimorfismo
+	 * Esse trecho de código faz parte da explicação de Polimorfismo
+	 * Mas esse método não é para demonstrar o polimorfismo em si.
+	 */
+
+	public function getSalario() {
+		return $this->salario;
+	}
+
+
+	/**
+	 * Aula 6 - Polimorfismo
+	 */
+
+	public function metodoPolimorfismo() {
+		echo "Método chamado da classe Funcionário";
+	}
 }
 
 

@@ -33,6 +33,35 @@
 	var_dump($funcionario instanceof Funcionario);
 	var_dump($funcionario instanceof Pessoa);
 
+	/**
+	 * Aula 6 - Polimorfismo
+	 */
+
+	echo "<h2>Aula 6 - Polimorfismo</h2>";
+
+	/**
+	 * Perceba que estamos recebendo um objeto do tipo Pessoa.
+	 * Qualquer subclasse de Pessoa é do tipo Pessoa.
+	 */
+	function showPessoa(Pessoa $p) { //
+		echo "<br />[showPessoa] Mostrando informações sobre \$p. <br />";
+		echo $p . "<br />"; //Chama o __toString correto!
+
+		echo $p->metodoPolimorfismo(); //Chama o metodoPolimorfismo correto!
+		echo '<br />';
+
+		if ( $p instanceof Funcionario )
+			echo "Salário: " . $p->getSalario();
+
+		echo "<br />";
+	}
+
+	showPessoa($funcionario);
+	showPessoa($pessoa);
+
+
+
+
 
 
 	?>
