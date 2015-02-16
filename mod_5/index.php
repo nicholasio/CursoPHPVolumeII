@@ -26,6 +26,21 @@
         echo htmlentities($Log->writeLog());
     echo '</pre>';
 
+    /**
+     *  Aula 3 e 4 - Traits
+     */
+
+    include ('Traits.php');
+    echo "<h2> Aula 3 e 4 - Traits </h2>";
+
+    $product = new Product();
+    echo "Preço: " . $product->calculateTax(100) . "<br/>";
+    echo "ID: " . $product->getId() . "<br />";
+
+    echo "methodA: " . $product->methodA() . "<br/>";
+    echo "methodB: " . $product->methodB() . "<br />";
+
+
 
 
     ?>
