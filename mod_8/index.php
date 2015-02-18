@@ -22,7 +22,7 @@
     $email->AltBody = "Alt Body";
 
     if ( ! $email->send() ) {
-        echo "Erro";
+        echo "Erro: " . $email->ErrorInfo;
     } else {
         echo "Mensagem enviada";
     }
