@@ -1,4 +1,2 @@
 mod_8/unittest/vendor/
-mod_8/unittest/composer.lock
 mod_8/composer-test/vendor/
-mod_8/composer-test/composer.lock
