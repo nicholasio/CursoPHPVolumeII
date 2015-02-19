@@ -11,5 +11,8 @@
             "email": "nicholas@iotecnologia.com.br"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "autoload" : {
+        "psr-4" : {"ComposerTest\\" : "app/src"}
+    }
 }

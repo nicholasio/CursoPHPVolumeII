@@ -7,3 +7,9 @@ $img = $gravatar->avatar('nicholas@iotecnologia.com.br');
 
 
 echo '<img src="' . $img. '" />';
+
+$ImgGravatarBuilder = new ComposerTest\ImgGravatarBuilder();
+var_dump($ImgGravatarBuilder);
+
+$gravatarGallery = new ComposerTest\Helpers\GravatarGallery();
+var_dump($gravatarGallery);
