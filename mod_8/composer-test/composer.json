@@ -1,0 +1,15 @@
+{
+    "name": "nicholas/composer-test",
+    "description": "Testando o Composer",
+    "require": {
+        "gravatarphp/gravatar": "0.1.*@dev"
+    },
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Nícholas André",
+            "email": "nicholas@iotecnologia.com.br"
+        }
+    ],
+    "minimum-stability": "dev"
+}
