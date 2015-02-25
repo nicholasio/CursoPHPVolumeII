@@ -1,0 +1,16 @@
+{
+    "name": "nicholas/echat",
+    "description": "Chat em Tempo real desenvolvido com PHP & Ajax como projeto final para o curso PHP Volume 2",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Nícholas André",
+            "email": "nicholas@iotecnologia.com.br"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload" : {
+        "psr-4" : { "EChat\\" : "app"}
+    }
+}

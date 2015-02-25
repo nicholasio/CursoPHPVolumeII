@@ -299,7 +299,7 @@ class PHPMailerTest extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(
             file_exists('./testbootstrap.php'),
-            'Test config params missing - copy testbootstrap.php to testbootstrap-dist.php and change as appropriate'
+            'Test Config params missing - copy testbootstrap.php to testbootstrap-dist.php and change as appropriate'
         );
     }
 
