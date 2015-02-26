@@ -1,5 +1,5 @@
 <?php
-namespace EChat\Core\Exceptions;
+namespace EChat\Exceptions;
 
 class RouterException extends \Exception {
 

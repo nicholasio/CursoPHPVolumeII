@@ -1,5 +1,5 @@
 <?php
-namespace EChat\Core;
+namespace EChat;
 
 class Registry {
     static private $_instances = [];

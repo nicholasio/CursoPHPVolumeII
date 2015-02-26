@@ -1,18 +1,19 @@
 <?php
-use \EChat\Core\Router\GETRoute as GETRoute;
+use \EChat\Router\GETRoute as GETRoute;
 
-$approuter = \EChat\Core\Registry::get('approuter');
+$approuter = \EChat\Registry::get('approuter');
 
 $approuter->addRoute(
     new GETRoute( [
-        'match' => 'index',
-        'action' => 'IndexAction'
+        'match' => ['index', ''],
+        'action' => 'index'
     ] )
 );
 
+/*
 $approuter->addRoute(
   new GETRoute( [
       'match' => 'chat',
       'action' => 'ChatAction'
   ] )
-);
+);*/

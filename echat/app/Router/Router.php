@@ -1,8 +1,8 @@
 <?php
-namespace EChat\Core\Router;
+namespace EChat\Router;
 
 abstract class Router {
-    private $routes = [];
+    protected $routes = [];
 
     public function __construct() {
         $this->routes = new \SplObjectStorage();
