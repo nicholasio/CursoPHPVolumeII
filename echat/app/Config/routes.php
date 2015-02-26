@@ -10,6 +10,13 @@ $approuter->addRoute(
     ] )
 );
 
+$approuter->addRoute(
+    new GETRoute( [
+        'match' => ['login'],
+        'action' => 'login'
+    ] )
+);
+
 /*
 $approuter->addRoute(
   new GETRoute( [

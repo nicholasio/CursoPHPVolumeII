@@ -8,8 +8,14 @@ define('APP_DIR', ROOT_DIR . '/app');
 //Carrega autoload do Composer
 include(__DIR__ . '/../vendor/autoload.php');
 
-EChat\Registry::add(new EChat\Router\GETRouter( ['GET_VAR' => 'action'] ), 'approuter');
+$router = new EChat\Router\GETRouter( ['GET_VAR' => 'action'] );
+
+EChat\Registry::add( $router, 'approuter');
 
 include(__DIR__ . '/../app/Config/routes.php');
 
-EChat\Registry::get('approuter')->dispatch();
+try{
+    EChat\Registry::get('approuter')->dispatch();
+} catch ( EChat\Exceptions\RouterException $e) {
+    echo "Erro: " . $e->getMessage();
+}
