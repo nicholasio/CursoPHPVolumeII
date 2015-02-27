@@ -9,7 +9,9 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "simplon/mysql": "dev-master"
+    },
     "autoload" : {
         "psr-4" : { "EChat\\" : "app"}
     }

@@ -3,8 +3,11 @@ namespace EChat\Actions;
 
 abstract class Action {
     protected $params;
+    protected $db;
 
-    abstract public function run();
+    public function __construct() {
+        $this->db = \EChat\Registry::get('appdb');
+    }
 
     public function setParams($params = null) {
         $this->params = $params;
@@ -28,4 +31,10 @@ abstract class Action {
     protected function loadFooter() {
         $this->loadTemplate('layout/footer', null);
     }
+
+    protected function redirect() {
+
+    }
+
+    abstract public function run();
 }

@@ -18,6 +18,9 @@ class GETRouter extends Router{
         $this->getvalue = filter_input(INPUT_GET, $params['GET_VAR'] );
     }
 
+    public function getGetVar() { return $this->getvar; }
+    public function getGetValue() { return $this->getvalue; }
+
     public function fetchGetParams( ) {
         if ( ! empty($_GET) ) {
             $params = $_GET;
