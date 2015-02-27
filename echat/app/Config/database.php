@@ -3,7 +3,7 @@
 return [
     'host'       => 'localhost',
     'user'       => 'root',
-    'password'   => 'PASSWORD',
+    'password'   => 'root',
     'database'   => 'echat',
 
     'fetchMode'  => \PDO::FETCH_ASSOC,

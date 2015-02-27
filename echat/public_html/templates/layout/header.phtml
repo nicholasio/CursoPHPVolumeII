@@ -23,5 +23,5 @@
             <div class="jumbotron">
                 <h1>Seja bem vindo</h1>
                 <p>Este é o projeto final do curso PHP Volume 2 - Um chat desenvolvido com PHP Orientado a Objetos, Ajax, jQuery e MySQL.</p>
-                <?php echo EChat\Helpers\URL\GETURL::doAction('login', ['init_user' => true])?>
+                <?php echo EChat\Helpers\URL\GETURL::getInstance()->doAction('login', ['init_user' => true])?>
             </div>

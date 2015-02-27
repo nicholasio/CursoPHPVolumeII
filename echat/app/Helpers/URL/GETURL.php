@@ -3,7 +3,7 @@ namespace EChat\Helpers\URL;
 
 class GETURL extends URL{
 
-    public static function doAction($action, Array $params = [])
+    public function doAction($action, Array $params = [])
     {
         $actionKey = \EChat\Registry::get('approuter')->getGetVar();
 
@@ -24,7 +24,7 @@ class GETURL extends URL{
 
     }
 
-    public static function redirect($url)
+    public function redirect($url)
     {
         header("Location: {$url} ");
         exit();
