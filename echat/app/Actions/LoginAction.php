@@ -13,7 +13,13 @@ class LoginAction extends Action {
         }
     }
 
-    protected function initUser() {
+    protected function initUser()
+    {
+        if ( isset($_POST['nickname']) && isset($_POST['email']) ) {
+            $nickname = $this->getPost('nickname');
+            $email = $this->getPost('email');
 
+
+        }
     }
 }

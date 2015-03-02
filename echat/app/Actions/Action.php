@@ -4,9 +4,12 @@ namespace EChat\Actions;
 abstract class Action {
     protected $params;
     protected $db;
+    protected $urlbuilder;
+
 
     public function __construct() {
         $this->db = \EChat\Registry::get('appdb');
+        $this->urlbuilder = \EChat\Registry::get('approuter')->getUrlBuilder();
     }
 
     public function setParams($params = null) {
@@ -34,6 +37,15 @@ abstract class Action {
 
     protected function redirect() {
 
+    }
+
+    public function UrlBuilder() {
+        return $this->urlbuilder;
+    }
+
+    public function getPost($key) {
+        if ( isset($_POST[$key]) )
+            return filter_input(INPUT_POST, $_POST[$key], FILTER_SANITIZE_STRING);
     }
 
     abstract public function run();

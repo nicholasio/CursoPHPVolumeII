@@ -1,14 +1,15 @@
 <?php
 namespace EChat\Router;
 use \EChat\Exceptions\RouterException as RouterException;
+use EChat\Helpers\URL\URLBuilder;
 
 class GETRouter extends Router{
     private $getvalue;
     private $getvar;
 
 
-    public function __construct(Array $params = array() ) {
-        parent::__construct();
+    public function __construct(Array $params = array(), URLBuilder $URLBuilder ) {
+        parent::__construct($URLBuilder);
 
         if ( empty($params) || !isset($params['GET_VAR']) ) {
             throw new RouterException("Nenhum GET_VAR definido");

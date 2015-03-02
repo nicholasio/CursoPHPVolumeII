@@ -1,13 +1,26 @@
 <?php
 namespace EChat\Helpers\URL;
+use EChat\Router\Router as Router;
 
-abstract class URL {
-    protected function __construct() {}
+abstract class URLBuilder {
+    protected $router;
+
+    public function __construct() {
+        $this->router = null;
+    }
+
+    public function setRouter(Router $router) {
+        $this->router = $router;
+    }
 
     abstract public function doAction($action, Array $params = []);
-    abstract public function redirect($url);
 
-    public static function getInstance($name = null) {
+    public function redirect($url) {
+        header("Location: {$url} ");
+        exit();
+    }
+
+    /*public static function getInstance($name = null) {
         if ( $name == NULL ) {
             $name = static::class;
         }
@@ -21,5 +34,5 @@ abstract class URL {
 
         return \EChat\Registry::get($name);
 
-    }
+    }*/
 }

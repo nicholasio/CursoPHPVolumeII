@@ -1,13 +1,13 @@
 <?php
 namespace EChat\Helpers\URL;
 
-class GETURL extends URL{
+class GETURLBuilder extends URLBuilder{
 
     public function doAction($action, Array $params = [])
     {
-        $actionKey = \EChat\Registry::get('approuter')->getGetVar();
+        $actionKey = $this->router->getGetVar();
 
-        $urlaction = "?{$actionKey}={$action}";
+        $urlaction = ROOT_URL . "?{$actionKey}={$action}";
 
         if ( !empty($params) ) {
             $params_key_value = [];
@@ -24,9 +24,5 @@ class GETURL extends URL{
 
     }
 
-    public function redirect($url)
-    {
-        header("Location: {$url} ");
-        exit();
-    }
+
 }
