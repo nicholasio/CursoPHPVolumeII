@@ -1,15 +1,20 @@
 <?php
 namespace EChat\Actions;
 
+use EChat\Helpers\SessionHandler;
+
 abstract class Action {
     protected $params;
-    protected $db;
-    protected $urlbuilder;
+    private $db;
+    private $urlbuilder;
 
 
     public function __construct() {
         $this->db = \EChat\Registry::get('appdb');
         $this->urlbuilder = \EChat\Registry::get('approuter')->getUrlBuilder();
+
+        $this->checkOnlineUsers();
+        $this->checkActualUser();
     }
 
     public function setParams($params = null) {
@@ -35,17 +40,35 @@ abstract class Action {
         $this->loadTemplate('layout/footer', null);
     }
 
-    protected function redirect() {
-
+    protected function redirect($url) {
+        header("Location: {$url}");
+        die();
     }
 
     public function UrlBuilder() {
         return $this->urlbuilder;
     }
 
+    public function Db() {
+        return $this->db;
+    }
+
     public function getPost($key) {
         if ( isset($_POST[$key]) )
-            return filter_input(INPUT_POST, $_POST[$key], FILTER_SANITIZE_STRING);
+            return filter_input(INPUT_POST, $key, FILTER_SANITIZE_STRING);
+    }
+
+    public function checkOnlineUsers() {
+        $this->db->executeSql("UPDATE Users SET status = 'off' WHERE TIME_TO_SEC(TIMEDIFF('"  .date('Y-m-d H:i:s') . "', lastactivity)) >= '". IDLE_TIME_SECS . "'");
+    }
+
+    public function checkActualUser() {
+        $user = SessionHandler::selectSession('user');
+
+        $status = $this->db->fetchColumn('SELECT status FROM Users WHERE user_hash = "' . $user['hash'] . '"' );
+
+        if ( $status == 'off' || !$status )
+            SessionHandler::deleteSession('user');
     }
 
     abstract public function run();

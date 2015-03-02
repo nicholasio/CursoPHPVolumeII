@@ -17,6 +17,14 @@ $approuter->addRoute(
     ] )
 );
 
+$approuter->addRoute(
+  new GETRoute( [
+          'match' => ['user'],
+          'action' => 'user'
+      ]
+  )
+);
+
 /*
 $approuter->addRoute(
   new GETRoute( [

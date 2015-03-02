@@ -19,20 +19,4 @@ abstract class URLBuilder {
         header("Location: {$url} ");
         exit();
     }
-
-    /*public static function getInstance($name = null) {
-        if ( $name == NULL ) {
-            $name = static::class;
-        }
-
-        if ( ! \EChat\Registry::contains($name) ) {
-            $instance = new $name();
-            \EChat\Registry::add($instance, $name);
-
-            return $instance;
-        }
-
-        return \EChat\Registry::get($name);
-
-    }*/
 }
