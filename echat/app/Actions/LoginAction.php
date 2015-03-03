@@ -30,7 +30,8 @@ class LoginAction extends Action {
 
             $user_hash = sha1($nickname . time());
 
-            $data = ['user_hash' => $user_hash, 'name' => $nickname, 'lastactivity' => date('Y-m-d H:i:s'), 'email' => $email, 'status' => 'on' ];
+            $curr_date = date('Y-m-d H:i:s');
+            $data = ['user_hash' => $user_hash, 'name' => $nickname, 'lastactivity' => $curr_date, 'entered_at' => $curr_date, 'email' => $email, 'status' => 'on' ];
 
             if ( $this->Db()->insert('Users',  $data) ) {
                 SessionHandler::createSession('user', ['nickname' => $nickname, 'email' => $email, 'hash' => $user_hash]);

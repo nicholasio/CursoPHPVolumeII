@@ -3,118 +3,47 @@
         <div class="panel-heading">
             Conversas
         </div>
-        <div class="panel-body conversation-history">
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-            </ul>
 
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="home">.asdasd..</div>
-                <div role="tabpanel" class="tab-pane" id="profile">..asas.</div>
-                <div role="tabpanel" class="tab-pane" id="messages">.dasda..</div>
-                <div role="tabpanel" class="tab-pane" id="settings">.sdasd..</div>
-            </div>
-            <ul class="media-list">
-                <li class="media">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#all" aria-controls="all" role="tab" data-toggle="tab">Todos</a></li>
+        </ul>
 
-                    <div class="media-body">
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="all">
+                <div class="panel-body conversation-history">
+                    <ul class="media-list">
 
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object img-circle " src="assets/img/user.png" />
-                            </a>
-                            <div class="media-body" >
-                                Donec sit amet ligula enim. Duis vel condimentum massa.
+                        <?php
 
-                                Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
-                                Duis vel condimentum massa.
-                                Donec sit amet ligula enim. Duis vel condimentum massa.
-                                <br />
-                                <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
-                                <hr />
-                            </div>
-                        </div>
+                        if ( is_array($this->template->messages) ) :  foreach($this->template->messages as $message) : ?>
+                            <li class="media" data-msg-date="<?= $message['date']; ?>">
+                                <div class="media-body">
+                                    <div class="media">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object img-circle " src="<?= $this->template->gravatar->avatar($message['email']); ?>" />
+                                        </a>
+                                        <div class="media-body" >
+                                            <?= $message['message']; ?>
+                                            <br />
+                                            <small class="text-muted"><?= $message['name']; ?> | <?= date('d/m/Y H:i:s', strtotime($message['date'])); ?></small>
+                                            <hr />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php endforeach; endif; ?>
 
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control chat-message" placeholder="Insira uma mensagem" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-info send-message" type="button" >Enviar</button>
+                        </span>
                     </div>
-                </li>
-                <li class="media">
-
-                    <div class="media-body">
-
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object img-circle " src="assets/img/user.gif" />
-                            </a>
-                            <div class="media-body" >
-                                Donec sit amet ligula enim. Duis vel condimentum massa.
-
-                                Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
-                                Duis vel condimentum massa.
-                                Donec sit amet ligula enim. Duis vel condimentum massa.
-                                <br />
-                                <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
-                                <hr />
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="media">
-
-                    <div class="media-body">
-
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object img-circle " src="assets/img/user.png" />
-                            </a>
-                            <div class="media-body" >
-                                Donec sit amet ligula enim. Duis vel condimentum massa.
-
-                                Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
-                                Duis vel condimentum massa.
-                                Donec sit amet ligula enim. Duis vel condimentum massa.
-                                <br />
-                                <small class="text-muted">Alex Deo | 23rd June at 5:00pm</small>
-                                <hr />
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="media">
-
-                    <div class="media-body">
-
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object img-circle " src="assets/img/user.gif" />
-                            </a>
-                            <div class="media-body" >
-                                Donec sit amet ligula enim. Duis vel condimentum massa.
-
-                                Donec sit amet ligula enim. Duis vel condimentum massa.Donec sit amet ligula enim.
-                                Duis vel condimentum massa.
-                                Donec sit amet ligula enim. Duis vel condimentum massa.
-                                <br />
-                                <small class="text-muted">Jhon Rexa | 23rd June at 5:00pm</small>
-                                <hr />
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="panel-footer">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter Message" />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-info" type="button">Enviar</button>
-                                    </span>
+                </div>
             </div>
         </div>
     </div>

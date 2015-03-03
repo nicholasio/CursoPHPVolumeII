@@ -4,7 +4,7 @@
     Nosso script Chat.js precisa saber qual é o hash do cliente conectado
 -->
 <div id="user_data" class="hidden">
-    <span  class="user_hash"><?= $user_session['hash']; ?></span>
+    <span  class="user_hash"><?= $this->template->user_session['hash']; ?></span>
 </div>
 
 <?php $this->loadTemplate('chat/chat'); ?>

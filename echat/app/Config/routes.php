@@ -25,6 +25,14 @@ $approuter->addRoute(
   )
 );
 
+$approuter->addRoute(
+  new GETRoute( [
+          'match' => ['message'],
+          'action' => 'message'
+      ]
+  )
+);
+
 /*
 $approuter->addRoute(
   new GETRoute( [

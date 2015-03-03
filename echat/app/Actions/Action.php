@@ -7,11 +7,18 @@ abstract class Action {
     protected $params;
     private $db;
     private $urlbuilder;
+    private $gravatar;
+
+    protected $template;
 
 
     public function __construct() {
         $this->db = \EChat\Registry::get('appdb');
         $this->urlbuilder = \EChat\Registry::get('approuter')->getUrlBuilder();
+
+        $this->template = new \stdClass();
+        $this->gravatar = new \Gravatar\UrlBuilder();
+        $this->gravatar->useHttps(true);
 
         $this->checkOnlineUsers();
         $this->checkActualUser();
@@ -25,8 +32,12 @@ abstract class Action {
         $templatePath = TEMPLATES_DIR . '/' . $template . '.phtml';
         if ( file_exists($templatePath) ) {
 
-            if ( $data && ! empty($data) )
-                extract($data);
+            if ( $data && ! empty($data) ) {
+                foreach($data as $key => $value ) {
+                    $this->template->{$key} = $value;
+                }
+            }
+
 
             include_once($templatePath);
         }
@@ -51,6 +62,10 @@ abstract class Action {
 
     public function Db() {
         return $this->db;
+    }
+
+    public function Gravatar() {
+        return $this->gravatar;
     }
 
     public function getPost($key) {

@@ -10,7 +10,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "simplon/mysql": "dev-master"
+        "simplon/mysql": "dev-master",
+        "gravatarphp/gravatar": "0.1.*@dev"
     },
     "autoload" : {
         "psr-4" : { "EChat\\" : "app"}
