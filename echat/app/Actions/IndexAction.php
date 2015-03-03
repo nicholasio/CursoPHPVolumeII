@@ -18,19 +18,18 @@ class IndexAction extends Action {
     }
 
     public function loadChat() {
-        $users = $this->Db()->fetchRowMany('SELECT * FROM Users WHERE status = "on" ');
+        $user_session = SessionHandler::selectSession('user');
+        $users = $this->Db()->fetchRowMany('SELECT * FROM Users WHERE status = "on" AND user_hash != :hash', array(':hash' => $user_session['user_hash']));
 
         $sql   = "SELECT * FROM Users,Chat WHERE Users.user_hash = Chat.user_hash_from ";
-        $sql  .= "AND Chat.user_hash_to IS NULL";
+        $sql  .= "AND Chat.user_hash_to IS NULL ORDER BY date";
 
         $messages = $this->Db()->fetchRowMany($sql);
 
 
-
         $template_data = [
-            'user_session' => SessionHandler::selectSession('user'),
+            'user_session' => $user_session,
             'users' => $users,
-            'gravatar' => $this->Gravatar(),
             'messages' => $messages
         ];
 

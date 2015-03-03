@@ -31,10 +31,18 @@ class LoginAction extends Action {
             $user_hash = sha1($nickname . time());
 
             $curr_date = date('Y-m-d H:i:s');
-            $data = ['user_hash' => $user_hash, 'name' => $nickname, 'lastactivity' => $curr_date, 'entered_at' => $curr_date, 'email' => $email, 'status' => 'on' ];
+            $data = [   'user_hash' => $user_hash,
+                        'name' => $nickname,
+                        'email' => $email,
+                        'gravatar' => $this->Gravatar()->avatar($email),
+                        'lastactivity' => $curr_date,
+                        'entered_at' => $curr_date,
+                        'status' => 'on'
+
+            ];
 
             if ( $this->Db()->insert('Users',  $data) ) {
-                SessionHandler::createSession('user', ['nickname' => $nickname, 'email' => $email, 'hash' => $user_hash]);
+                SessionHandler::createSession('user', $data);
                 $this->redirect($this->UrlBuilder()->doAction('index'));
             }
 

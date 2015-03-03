@@ -5,23 +5,55 @@
         </div>
         <div class="panel-body online-users">
             <ul class="media-list">
+                <li class="media">
+                    <div class="media-body">
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object img-circle" style="max-height:40px;" src="<?= $this->template->user_session['gravatar'];?>" />
+                            </a>
+                            <div class="media-body" >
+
+                                <h5><a href="#" class="new-private-chat" data-hash="<?= $this->template->user_session['user_hash'] ?>">
+                                        <?= $this->template->user_session['name']; ?>
+                                            (Você)
+                                    </a>
+                                </h5>
+                                <small class="text-muted">
+                                    Entrou em
+                                    <?php
+                                    $enterred_date = new DateTime($this->template->user_session['entered_at']);
+                                    echo $enterred_date->format('d/m/Y à\s H:i:s');
+                                    ?>
+                                </small>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+            <hr/>
+            <ul class="media-list users-list">
                 <?php if ( is_array($this->template->users) ) : foreach($this->template->users as $user) : ?>
                     <li class="media">
                         <div class="media-body">
-
                             <div class="media">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object img-circle" style="max-height:40px;" src="<?php echo $this->template->gravatar->avatar($user['email']);?>" />
+                                    <img class="media-object img-circle" style="max-height:40px;" src="<?= $user['gravatar'];?>" />
                                 </a>
                                 <div class="media-body" >
-                                    <h5><a href="#" class="new-private-chat" data-hash="<?= $user['user_hash'] ?>"><?= $user['name']; ?></a></h5>
+
+                                    <h5><a href="#" class="new-private-chat" data-hash="<?= $user['user_hash'] ?>">
+                                            <?= $user['name']; ?>
+                                            <?php if ( $this->template->user_session['user_hash'] == $user['user_hash'] ) : ?>
+                                                (Você)
+                                            <?php endif; ?>
+                                        </a>
+                                    </h5>
                                     <small class="text-muted">
-                                        Online à
+                                        Entrou em
                                         <?php
-                                            $curr_date = new DateTime();
-                                            $lastActivity = new DateTime($user['entered_at']);
-                                            $date_diff = $curr_date->diff($lastActivity);
-                                            echo $date_diff->h . 'h ' . $date_diff->i . 'm ' . $date_diff->s . 's';
+                                            $enterred_date = new DateTime($user['entered_at']);
+                                            echo $enterred_date->format('d/m/Y à\s H:i:s');
                                         ?>
                                     </small>
                                 </div>

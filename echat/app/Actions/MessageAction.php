@@ -36,13 +36,9 @@ class MessageAction extends Action{
         $lastMsgDate = $this->params['last_msg_date'];
 
         $sql   = "SELECT * FROM Users,Chat WHERE Users.user_hash = Chat.user_hash_from ";
-        $sql  .= "AND Chat.date >= '{$lastMsgDate}'";
+        $sql  .= "AND Chat.date > '{$lastMsgDate}'";
 
         $newMessages = $this->Db()->fetchRowMany($sql);
-
-        foreach($newMessages as &$message) {
-            $message['gravatar'] = $this->Gravatar()->avatar($message['email']);
-        }
 
         echo json_encode($newMessages);
         die();

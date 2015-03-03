@@ -21,7 +21,7 @@
                                 <div class="media-body">
                                     <div class="media">
                                         <a class="pull-left" href="#">
-                                            <img class="media-object img-circle " src="<?= $this->template->gravatar->avatar($message['email']); ?>" />
+                                            <img class="media-object img-circle " src="<?= $message['gravatar']; ?>" />
                                         </a>
                                         <div class="media-body" >
                                             <?= $message['message']; ?>
