@@ -1,12 +1,4 @@
 (function($){
-
-    function convertToJsDate(date) {
-        var t = date.split(/[- :]/);
-        var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
-
-        return d;
-    }
-
     var Chat = {
         $user_data      : null,
         $sendMsgBtn     : null,
@@ -52,6 +44,8 @@
             $.getJSON('?action=user', { 'update_users' : true, 'user_hash' : this.user_hash}, function(users) {
                 if ( users !== undefined && users.length > 0) {
                     self.insertNewUsers(users);
+                } else {
+                    self.$users.html('');
                 }
             });
         },
@@ -74,7 +68,7 @@
                                         </h5>\
                                         <small class="text-muted">\
                                         Entrou em\
-                                        '+ convertToJsDate(msg.date).toString() +'\
+                                        '+ moment(user.entered_at).format('DD/MM/YYYY hh:mm:ss') +'\
                                         </small>\
                                     </div>\
                                 </div>\
@@ -113,7 +107,7 @@
                                         <div class="media-body" >\
                                             '+msg.message+'\
                                             <br />\
-                                            <small class="text-muted">' + msg.name +'| </small>\
+                                            <small class="text-muted">' + msg.name +' | ' + moment(msg.date).format('DD/MM/YYYY hh:mm:ss') + '</small>\
                                             <hr />\
                                         </div>\
                                     </div>\

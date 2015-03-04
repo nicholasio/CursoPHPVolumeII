@@ -13,7 +13,6 @@ class UserAction extends Action {
 
     public function updateLastActivity() {
         $this->Db()->update('Users', ['user_hash' => $this->params['user_hash']], ['lastactivity' => date('Y-m-d H:i:s')]);
-        die();
     }
 
     public function updateUsers() {

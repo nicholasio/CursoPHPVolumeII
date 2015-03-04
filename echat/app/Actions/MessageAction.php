@@ -37,6 +37,8 @@ class MessageAction extends Action{
         if ( $lastMsgDate !== false )
             $sql  .= "AND Chat.date > '{$lastMsgDate}'";
 
+        $sql .= " ORDER BY date";
+
         $newMessages = $this->Db()->fetchRowMany($sql);
 
         echo json_encode($newMessages);

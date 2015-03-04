@@ -28,6 +28,11 @@ class LoginAction extends Action {
             if ( strlen($nickname) <= 3 )
                 $this->redirect($this->UrlBuilder()->doAction('login'));
 
+            //verificando se existe alguem esse email online
+            if ( $this->Db()->fetchRow("SELECT * FROM Users WHERE email = :email AND status ='on' ", [':email' => $email]) ) {
+                $this->redirect($this->UrlBuilder()->doAction('login', ['error' => 'E-mail já está em uso']) );
+            }
+
             $user_hash = sha1($nickname . time());
 
             $curr_date = date('Y-m-d H:i:s');
