@@ -22,7 +22,6 @@ class IndexAction extends Action {
         $users = $this->Db()->fetchRowMany('SELECT * FROM Users WHERE status = "on" AND user_hash != :hash', array(':hash' => $user_session['user_hash']));
 
         $sql   = "SELECT * FROM Users,Chat WHERE Users.user_hash = Chat.user_hash_from ";
-        $sql  .= "AND Chat.user_hash_to IS NULL ORDER BY date";
 
         $messages = $this->Db()->fetchRowMany($sql);
 

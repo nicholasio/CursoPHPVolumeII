@@ -9,7 +9,7 @@ define('TEMPLATES_DIR', PUBLIC_DIR . '/templates');
 define('ROOT_DIR', __DIR__ . '/..');
 define('APP_DIR', ROOT_DIR . '/app');
 
-define('ROOT_URL', 'http://scotchbox/cursophpvolume2/echat/public_html/');
+define('ROOT_URL', 'http://192.168.51.4/vhosts/phpvolume2/echat/public_html/');
 define('IDLE_TIME_SECS', 60);
 
 date_default_timezone_set('America/Fortaleza');
