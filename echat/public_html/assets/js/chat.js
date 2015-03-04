@@ -4,6 +4,7 @@
         $sendMsgBtn     : null,
         $history        : null,
         $users          : null,
+        $chatMessage    : null,
         user_hash       : null,
         timeout         : 3 * 1000,
 
@@ -13,10 +14,18 @@
             this.$history           = $('.conversation-history');
             this.$users             = $('.users-list');
             this.user_hash          = this.$user_data.find('.user_hash').text();
-
-            this.$sendMsgBtn.on('click', $.proxy(this.sendMessage, this) );
+            this.$chatMessage       = $('.chat-message');
 
             var self = this;
+
+            this.$sendMsgBtn.on('click', $.proxy(this.sendMessage, this) );
+            this.$chatMessage.on('keypress', function(evt) {
+                if ( evt.which == 13 ) {
+                    self.sendMessage();
+                }
+            });
+
+
             setInterval( function() {
                 self.updateUsers();
                 self.updateChat();
@@ -25,14 +34,13 @@
             this.scrollToBotton();
         },
         sendMessage : function() {
-            var $chatMsg = $('.chat-message');
-            var msg  = $chatMsg.val();
+            var msg  = this.$chatMessage.val();
 
             if ( msg.length > 0 ) {
                 var self = this;
                 $.get('?action=message', { 'user_hash_from' : this.user_hash, 'message' : msg}, function(data) {
                     if ( data == 1 ) {
-                        $chatMsg.val('');
+                        self.$chatMessage.val('');
                         self.updateChat();
                     }
                 } );
@@ -41,7 +49,7 @@
 
         updateUsers : function() {
             var self = this;
-            $.getJSON('?action=user', { 'update_users' : true, 'user_hash' : this.user_hash}, function(users) {
+            $.getJSON('?action=user', { 'update_users' : 1, 'user_hash' : this.user_hash}, function(users) {
                 if ( users !== undefined && users.length > 0) {
                     self.insertNewUsers(users);
                 } else {
@@ -85,7 +93,7 @@
             if ( lastMsgDate === undefined ) lastMsgDate = 0;
 
             var self = this;
-            $.getJSON('?action=message', {'update_messages' : true, 'last_msg_date' : lastMsgDate}, function(newMessages) {
+            $.getJSON('?action=message', {'update_messages' : 1, 'last_msg_date' : lastMsgDate}, function(newMessages) {
                 if ( newMessages !== undefined && newMessages.length > 0 ) {
                     self.insertNewMessages(newMessages);
                 }
@@ -96,8 +104,6 @@
         insertNewMessages : function(newMessages) {
             var list = '';
             $.each(newMessages, function(key,msg) {
-                /*var msgDate = new Date(msg.date);
-                console.log(msgDate);*/
                 list += '<li class="media" data-msg-date="' + msg.date + '">\
                                 <div class="media-body">\
                                     <div class="media">\
