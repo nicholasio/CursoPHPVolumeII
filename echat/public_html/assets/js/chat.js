@@ -1,5 +1,12 @@
 (function($){
 
+    function convertToJsDate(date) {
+        var t = date.split(/[- :]/);
+        var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+        return d;
+    }
+
     var Chat = {
         $user_data      : null,
         $sendMsgBtn     : null,
@@ -100,6 +107,7 @@
                                         </h5>\
                                         <small class="text-muted">\
                                         Entrou em\
+                                        '+ convertToJsDate(msg.date).toString() +'\
                                         </small>\
                                     </div>\
                                 </div>\
