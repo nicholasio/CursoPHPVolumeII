@@ -16,6 +16,7 @@
             this.user_hash          = this.$user_data.find('.user_hash').text();
             this.$chatMessage       = $('.chat-message');
 
+
             var self = this;
 
             this.$sendMsgBtn.on('click', $.proxy(this.sendMessage, this) );

@@ -2,6 +2,7 @@
 session_start();
 
 use EChat\Helpers\URL\GETURLBuilder;
+use EChat\Helpers\URL\FriendURLBuilder;
 
 define('PUBLIC_DIR', __DIR__ );
 define('TEMPLATES_DIR', PUBLIC_DIR . '/templates');
@@ -40,6 +41,7 @@ try{
      * Configurando Rotas e Dispachando
      */
     $router = new EChat\Router\GETRouter( ['GET_VAR' => 'action'], new GETURLBuilder() );
+    //$router = new EChat\Router\FriendRouter( 'url', new FriendURLBuilder() );
     EChat\Registry::add( $router, 'approuter');
 
     include(APP_DIR . '/Config/routes.php');

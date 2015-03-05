@@ -1,24 +1,24 @@
 <?php
-use \EChat\Router\GETRoute as GETRoute;
+use \EChat\Router\Route;
 
 $approuter = \EChat\Registry::get('approuter');
 
 $approuter->addRoute(
-    new GETRoute( [
+    new Route( [
         'match' => ['index', ''],
         'action' => 'index'
     ] )
 );
 
 $approuter->addRoute(
-    new GETRoute( [
+    new Route( [
         'match' => ['login'],
         'action' => 'login'
     ] )
 );
 
 $approuter->addRoute(
-  new GETRoute( [
+  new Route( [
           'match' => ['user'],
           'action' => 'user'
       ]
@@ -26,7 +26,7 @@ $approuter->addRoute(
 );
 
 $approuter->addRoute(
-  new GETRoute( [
+  new Route( [
           'match' => ['message'],
           'action' => 'message'
       ]

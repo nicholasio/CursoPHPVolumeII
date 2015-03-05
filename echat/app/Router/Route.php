@@ -2,7 +2,7 @@
 namespace EChat\Router;
 use \EChat\Exceptions\RouteException as RouteException;
 
-class GETRoute implements IRoute {
+class Route implements IRoute {
     private $actionsKey;
     private $actionClass;
 

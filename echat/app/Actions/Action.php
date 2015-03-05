@@ -11,7 +11,6 @@ abstract class Action {
 
     protected $template;
 
-
     public function __construct() {
         $this->db = \EChat\Registry::get('appdb');
         $this->urlbuilder = \EChat\Registry::get('approuter')->getUrlBuilder();
@@ -29,6 +28,7 @@ abstract class Action {
     }
 
     protected function loadTemplate($template, $data = null) {
+
         $templatePath = TEMPLATES_DIR . '/' . $template . '.phtml';
         if ( file_exists($templatePath) ) {
 
