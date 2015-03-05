@@ -1,11 +1,13 @@
 <?php
 namespace EChat\Actions;
 
+use EChat\Helpers\SessionHandler;
+
 class MessageAction extends Action{
 
     public function run()
     {
-        if ( isset($this->params['message']) && isset($this->params['user_hash_from']) ) {
+        if ( isset($this->params['message'])  ) {
             $this->sendMessage();
         } else if ( isset($this->params['update_messages']) && isset($this->params['last_msg_date'])) {
             $this->updateMessages();
@@ -16,7 +18,7 @@ class MessageAction extends Action{
     public function sendMessage() {
         $data = [
             'message' => $this->params['message'],
-            'user_hash_from' => $this->params['user_hash_from'],
+            'user_hash_from' => SessionHandler::selectSession('user')['user_hash'],
             'date' => date('Y-m-d H:i:s')
         ];
 

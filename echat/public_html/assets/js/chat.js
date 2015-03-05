@@ -39,7 +39,7 @@
 
             if ( msg.length > 0 ) {
                 var self = this;
-                $.get('?action=message', { 'user_hash_from' : this.user_hash, 'message' : msg}, function(data) {
+                $.get(Ajax.url, {'action': 'message', 'message' : msg}, function(data) {
                     if ( data == 1 ) {
                         self.$chatMessage.val('');
                         self.updateChat();
@@ -50,7 +50,7 @@
 
         updateUsers : function() {
             var self = this;
-            $.getJSON('?action=user', { 'update_users' : 1, 'user_hash' : this.user_hash}, function(users) {
+            $.getJSON(Ajax.url, {'action':'user', 'update_users' : 1}, function(users) {
                 if ( users !== undefined && users.length > 0) {
                     self.insertNewUsers(users);
                 } else {
@@ -77,7 +77,7 @@
                                         </h5>\
                                         <small class="text-muted">\
                                         Entrou em\
-                                        '+ moment(user.entered_at).format('DD/MM/YYYY hh:mm:ss') +'\
+                                        '+ moment(user.entered_at).format('DD/MM/YYYY HH:mm:ss') +'\
                                         </small>\
                                     </div>\
                                 </div>\
@@ -94,7 +94,7 @@
             if ( lastMsgDate === undefined ) lastMsgDate = 0;
 
             var self = this;
-            $.getJSON('?action=message', {'update_messages' : 1, 'last_msg_date' : lastMsgDate}, function(newMessages) {
+            $.getJSON(Ajax.url, {'action' : 'message','update_messages' : 1, 'last_msg_date' : lastMsgDate}, function(newMessages) {
                 if ( newMessages !== undefined && newMessages.length > 0 ) {
                     self.insertNewMessages(newMessages);
                 }
@@ -114,7 +114,7 @@
                                         <div class="media-body" >\
                                             '+msg.message+'\
                                             <br />\
-                                            <small class="text-muted">' + msg.name +' | ' + moment(msg.date).format('DD/MM/YYYY hh:mm:ss') + '</small>\
+                                            <small class="text-muted">' + msg.name +' | ' + moment(msg.date).format('DD/MM/YYYY HH:mm:ss') + '</small>\
                                             <hr />\
                                         </div>\
                                     </div>\

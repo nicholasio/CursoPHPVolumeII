@@ -1,6 +1,10 @@
 <?php
 namespace EChat;
 
+/**
+ * Class Registry
+ * @package EChat
+ */
 class Registry {
     static private $_instances = [];
 

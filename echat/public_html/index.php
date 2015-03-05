@@ -40,8 +40,12 @@ try{
     /**
      * Configurando Rotas e Dispachando
      */
-    $router = new EChat\Router\GETRouter( ['GET_VAR' => 'action'], new GETURLBuilder() );
-    //$router = new EChat\Router\FriendRouter( 'url', new FriendURLBuilder() );
+    if ( isset($_GET['url']) ) {
+        $router = new EChat\Router\FriendRouter( 'url', new FriendURLBuilder() );
+    } else {
+        $router = new EChat\Router\GETRouter( 'action', new GETURLBuilder() );
+    }
+
     EChat\Registry::add( $router, 'approuter');
 
     include(APP_DIR . '/Config/routes.php');

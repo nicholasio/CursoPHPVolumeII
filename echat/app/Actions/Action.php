@@ -80,10 +80,14 @@ abstract class Action {
     public function checkActualUser() {
         $user = SessionHandler::selectSession('user');
 
-        $status = $this->db->fetchColumn('SELECT status FROM Users WHERE user_hash = "' . $user['user_hash'] . '"' );
+        if ( $user ) {
+            $status = $this->db->fetchColumn('SELECT status FROM Users WHERE user_hash = "' . $user['user_hash'] . '"' );
 
-        if ( $status == 'off' || !$status )
-            SessionHandler::deleteSession('user');
+            if ( $status == 'off' || !$status )
+                SessionHandler::deleteSession('user');
+        }
+
+
     }
 
     abstract public function run();

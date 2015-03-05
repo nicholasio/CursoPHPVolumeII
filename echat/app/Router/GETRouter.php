@@ -8,15 +8,11 @@ class GETRouter extends Router{
     private $getvar;
 
 
-    public function __construct(Array $params = array(), URLBuilder $URLBuilder ) {
+    public function __construct($getvar, URLBuilder $URLBuilder ) {
         parent::__construct($URLBuilder);
 
-        if ( empty($params) || !isset($params['GET_VAR']) ) {
-            throw new RouterException("Nenhum GET_VAR definido");
-        }
-
-        $this->getvar = $params['GET_VAR'];
-        $this->getvalue = filter_input(INPUT_GET, $params['GET_VAR'] );
+        $this->getvar = $getvar;
+        $this->getvalue = filter_input(INPUT_GET, $getvar );
     }
 
     public function getGetVar() { return $this->getvar; }
