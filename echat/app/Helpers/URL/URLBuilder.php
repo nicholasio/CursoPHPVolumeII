@@ -14,9 +14,4 @@ abstract class URLBuilder {
     }
 
     abstract public function doAction($action, Array $params = []);
-
-    public function redirect($url) {
-        header("Location: {$url} ");
-        exit();
-    }
 }

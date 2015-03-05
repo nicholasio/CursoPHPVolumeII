@@ -22,7 +22,6 @@ class FriendRouter extends Router{
                 throw new RouterException("URL Mal formada");
             }
 
-
             for($i = 1; $i< count($url_parts); $i+=2) {
                 $params[$url_parts[$i]] = $url_parts[$i+1];
             }
@@ -33,15 +32,13 @@ class FriendRouter extends Router{
 
     public function dispatch()
     {
-
         $action = '';
         $params = [];
         if ( ! empty($this->url) ) {
             if ( $this->url[strlen($this->url)-1] == '/' )
-                $this->url = substr(0, strlen($this->url) -1);
+                $this->url = substr($this->url,0, -1);
 
             $url_parts = explode('/', $this->url);
-
             $action = $url_parts[0];
             $params = $this->fetchParams($url_parts);
         }

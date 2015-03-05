@@ -8,6 +8,8 @@ class LoginAction extends Action {
 
     public function run()
     {
+        if ( SessionHandler::checkSession('user') )
+            $this->redirect( $this->UrlBuilder()->doAction('index'));
         if ( isset($this->params['init_user']) && $this->params['init_user'] ) {
             $this->initUser();
         } else {
