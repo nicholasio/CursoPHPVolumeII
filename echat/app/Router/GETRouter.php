@@ -3,6 +3,11 @@ namespace EChat\Router;
 use \EChat\Exceptions\RouterException as RouterException;
 use EChat\Helpers\URL\URLBuilder;
 
+/**
+ * Um Router que trabalha diretamente com uma variável GET
+ * @package EChat\Router
+ * @author Nícholas André<nicholas@iotecnologia.com.br>
+ */
 class GETRouter extends Router{
     private $getvalue;
     private $getvar;

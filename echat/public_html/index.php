@@ -44,7 +44,6 @@ try{
         $router = new EChat\Router\GETRouter( 'action', new GETURLBuilder() );
     } else {
         $router = new EChat\Router\FriendRouter( 'url', new FriendURLBuilder() );
-
     }
 
     EChat\Registry::add( $router, 'approuter');

@@ -3,6 +3,11 @@ namespace EChat\Router;
 use EChat\Exceptions\RouterException;
 use EChat\Helpers\URL\URLBuilder;
 
+/**
+ * Um Router que implementa URL Amigáveis no formato domain.com/action/param1/value1/param2/value2
+ * @package EChat\Router
+ * @author Nícholas André<nicholas@iotecnologia.com.br>
+ */
 class FriendRouter extends Router{
 
     private $url;
@@ -41,13 +46,12 @@ class FriendRouter extends Router{
             }
 
             for($i = 1; $i< count($url_parts); $i+=2) {
-                $params[$url_parts[$i]] = $url_parts[$i+1];
+                $params[$url_parts[$i]] = filter_var($url_parts[$i+1], FILTER_SANITIZE_STRING);
             }
         }
 
         return $params;
     }
-
 
     protected function checkRoute($action, $route)
     {

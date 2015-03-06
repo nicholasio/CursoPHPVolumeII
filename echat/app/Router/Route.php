@@ -2,6 +2,11 @@
 namespace EChat\Router;
 use \EChat\Exceptions\RouteException as RouteException;
 
+/**
+ * Define uma rota simples. Casa um conjunto de strings e mapeia a uma determinada ActionClass
+ * @package EChat\Router
+ * @author Nícholas André<nicholas@iotecnologia.com.br>
+ */
 class Route implements IRoute {
     private $actionsKey;
     private $actionClass;
@@ -30,10 +35,10 @@ class Route implements IRoute {
     }
 
     /**
-     * @param array $params
-     * @throws RouteException
      * 'match' indica qual valor da get_var casar e action indica o nome da action.
      * O seguinte padrão deverá ser seguido: A Classe IndexAction tem o nome de action igual a index e assim por diante
+     * @param array $params
+     * @throws RouteException
      */
     public function setRoute(Array $params)
     {

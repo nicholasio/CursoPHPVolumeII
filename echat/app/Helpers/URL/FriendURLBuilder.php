@@ -1,9 +1,21 @@
 <?php
 namespace EChat\Helpers\URL;
 
-
+/**
+ * Class FriendURLBuilder
+ * @package EChat\Helpers\URL
+ * @author Nícholas André<nicholas@iotecnologia.com.br>
+ * @see EChat\Router\FriendRouter    Um Rounter que implementa URL's amigáveis
+ * Gera URL's seguindo o padrão do FriendRouter.
+ */
 class FriendURLBuilder extends URLBuilder{
 
+    /**
+     * @param $action
+     * @param array $params
+     * @return string
+     * Monta uma URL no formato do FriendRouter
+     */
     public function doAction($action, Array $params = [])
     {
         $urlaction = ROOT_URL . "{$action}/";

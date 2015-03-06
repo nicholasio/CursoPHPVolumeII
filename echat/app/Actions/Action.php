@@ -3,6 +3,11 @@ namespace EChat\Actions;
 
 use EChat\Helpers\SessionHandler;
 
+/**
+ * Class Action
+ * @package EChat\Actions
+ * @author Nícholas André<nicholas@iotecnologia.com.br>
+ */
 abstract class Action {
     protected $params;
     private $db;
@@ -27,6 +32,11 @@ abstract class Action {
         $this->params = $params;
     }
 
+    /**
+     * @param $template
+     * @param null $data
+     * Carrega um template e coloca os parâmetros $data em $this->template
+     */
     protected function loadTemplate($template, $data = null) {
 
         $templatePath = TEMPLATES_DIR . '/' . $template . '.phtml';
