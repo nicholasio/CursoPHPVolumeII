@@ -8,7 +8,8 @@ namespace EChat;
 class Registry {
     static private $_instances = [];
 
-    public static function add($object, $name = null) {
+    public static function add($object, $name = null)
+    {
         $name = ( !is_null($name) ) ? $name : get_class($object);
         $name = strtolower($name);
 
@@ -22,7 +23,8 @@ class Registry {
         return $return;
     }
 
-    public static function get($name) {
+    public static function get($name)
+    {
         if ( !self::contains($name) ) {
             throw new \Exception("Objeto não existe no registro");
         }
@@ -30,7 +32,8 @@ class Registry {
         return self::$_instances[$name];
     }
 
-    public static function contains($name) {
+    public static function contains($name)
+    {
         if ( !isset(self::$_instances[$name]) ) {
             return false;
         }
@@ -38,7 +41,8 @@ class Registry {
         return true;
     }
 
-    public static function remove($name) {
+    public static function remove($name)
+    {
         if ( self::contains($name) ) {
             unset(self::$_instances[$name]);
         }

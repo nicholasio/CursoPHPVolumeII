@@ -13,7 +13,7 @@ class FriendURLBuilder extends URLBuilder{
 
             array_walk($params, function ($value, $key) use (&$params_key_value) {
                 $params_key_value[] = $key;
-                $params_key_value[] = $value;
+                $params_key_value[] = urlencode($value);
             });
 
             $urlaction .= implode('/', $params_key_value);

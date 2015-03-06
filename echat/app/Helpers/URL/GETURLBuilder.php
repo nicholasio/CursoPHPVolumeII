@@ -13,7 +13,7 @@ class GETURLBuilder extends URLBuilder{
             $params_key_value = [];
 
             array_walk($params, function ($value, $key) use (&$params_key_value) {
-                $params_key_value[] = $key . '=' . $value;
+                $params_key_value[] = $key . '=' . urlencode($value);
             });
 
             $urlaction .= '&' . implode('&', $params_key_value);

@@ -5,7 +5,6 @@
         $history        : null,
         $users          : null,
         $chatMessage    : null,
-        user_hash       : null,
         timeout         : 3 * 1000,
 
         init : function() {
@@ -13,7 +12,6 @@
             this.$sendMsgBtn        = $('.send-message');
             this.$history           = $('.conversation-history');
             this.$users             = $('.users-list');
-            this.user_hash          = this.$user_data.find('.user_hash').text();
             this.$chatMessage       = $('.chat-message');
 
 

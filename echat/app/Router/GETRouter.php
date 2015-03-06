@@ -8,17 +8,31 @@ class GETRouter extends Router{
     private $getvar;
 
 
-    public function __construct($getvar, URLBuilder $URLBuilder ) {
+    public function __construct($getvar, URLBuilder $URLBuilder )
+    {
         parent::__construct($URLBuilder);
 
         $this->getvar = $getvar;
         $this->getvalue = filter_input(INPUT_GET, $getvar );
     }
 
-    public function getGetVar() { return $this->getvar; }
-    public function getGetValue() { return $this->getvalue; }
+    public function getGetVar()
+    {
+        return $this->getvar;
+    }
 
-    public function fetchGetParams( ) {
+    public function getAction()
+    {
+        return $this->getvalue;
+    }
+
+    protected function checkRoute($action, $route)
+    {
+        return in_array($action, $route->getActionsKey());
+    }
+
+    protected function fetchParams()
+    {
         if ( ! empty($_GET) ) {
             $params = $_GET;
 
@@ -32,26 +46,7 @@ class GETRouter extends Router{
             return $params;
         }
 
-        return array();
-    }
-
-    public function dispatch()
-    {
-        foreach( $this->routes as $route) {
-            if ( in_array($this->getvalue, $route->getActionsKey()) ) {
-                $params = $this->fetchGetParams();
-                $class = $route->getActionClass();
-
-                $instance = new $class;
-                $instance->setParams($params);
-                $instance->run();
-
-                return;
-            }
-        }
-
-        //Se chegar até aqui é porquê nenhuma rota foi definida
-        throw new RouterException("Nenhuma rota definida");
+        return [];
     }
 
 

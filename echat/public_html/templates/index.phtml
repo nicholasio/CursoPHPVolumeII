@@ -1,12 +1,5 @@
 <?php $this->loadHeader(); ?>
 
-<!--
-    Nosso script Chat.js precisa saber qual é o hash do cliente conectado
--->
-<div id="user_data" class="hidden">
-    <span  class="user_hash"><?= $this->template->user_session['user_hash']; ?></span>
-</div>
-
 <?php $this->loadTemplate('chat/chat'); ?>
 
 <?php $this->loadTemplate('chat/users-online'); ?>

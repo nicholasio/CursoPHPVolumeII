@@ -28,7 +28,7 @@
     <form class="form-signin" method="POST" action="<?= $this->UrlBuilder()->doAction('login', ['init_user' => true]); ?>">
         <h2 class="form-signin-heading">Prencha seus dados</h2>
         <?php
-            $error = filter_input(INPUT_GET, 'error');
+            $error = isset($this->params['error']) ? $this->params['error'] : false;
 
             if ( $error ) :
         ?>

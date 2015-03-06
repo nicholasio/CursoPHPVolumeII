@@ -5,11 +5,13 @@ use EChat\Router\Router as Router;
 abstract class URLBuilder {
     protected $router;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->router = null;
     }
 
-    public function setRouter(Router $router) {
+    public function setRouter(Router $router)
+    {
         $this->router = $router;
     }
 

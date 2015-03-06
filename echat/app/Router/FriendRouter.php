@@ -7,15 +7,33 @@ class FriendRouter extends Router{
 
     private $url;
     private $getvar;
+    private $url_parts;
+    private $action;
 
-    public function __construct($getvar, URLBuilder $URLBuilder) {
+    public function __construct($getvar, URLBuilder $URLBuilder)
+    {
         parent::__construct($URLBuilder);
 
         $this->getvar = $getvar;
         $this->url = filter_input(INPUT_GET, $getvar);
+
+        $this->action = '';
+        $this->url_parts = [];
+
+        if ( ! empty($this->url) ) {
+            if ( $this->url[strlen($this->url)-1] == '/' )
+                $this->url = substr($this->url,0, -1);
+
+            $url_parts = explode('/', $this->url);
+            $this->action = $url_parts[0];
+            $this->url_parts = $url_parts;
+        }
     }
 
-    private function fetchParams($url_parts) {
+    protected function fetchParams()
+    {
+        $url_parts = $this->url_parts;
+
         $params = [];
         if ( ! empty($url_parts) ) {
             if ( (count($url_parts) - 1) % 2 != 0 ) {
@@ -30,35 +48,14 @@ class FriendRouter extends Router{
         return $params;
     }
 
-    public function dispatch()
+
+    protected function checkRoute($action, $route)
     {
-        $action = '';
-        $params = [];
-        if ( ! empty($this->url) ) {
-            if ( $this->url[strlen($this->url)-1] == '/' )
-                $this->url = substr($this->url,0, -1);
+        return in_array($action, $route->getActionsKey());
+    }
 
-            $url_parts = explode('/', $this->url);
-            $action = $url_parts[0];
-            $params = $this->fetchParams($url_parts);
-        }
-
-
-        foreach( $this->routes as $route) {
-            if ( in_array($action, $route->getActionsKey()) ) {
-
-                $class = $route->getActionClass();
-                $instance = new $class;
-                $instance->setParams($params);
-                $instance->run();
-
-
-                return;
-            }
-        }
-
-        //Se chegar até aqui é porquê nenhuma rota foi definida
-        throw new RouterException("Nenhuma rota definida");
-
+    public function getAction()
+    {
+        return $this->action;
     }
 }
