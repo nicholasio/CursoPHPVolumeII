@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "af2f252e785726e8838b1d4b97171d59",
+    "hash": "4500cacc38490ca7af307819781dc259",
     "packages": [
         {
             "name": "gravatarphp/gravatar",
@@ -106,7 +106,7 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "simplon/mysql": 20,
         "gravatarphp/gravatar": 20

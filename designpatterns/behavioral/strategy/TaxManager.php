@@ -1,6 +1,5 @@
 <?php
 
-
 class TaxManager implements ITax {
 
     public function calculate(Employee $emp)

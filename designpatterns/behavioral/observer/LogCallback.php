@@ -3,7 +3,7 @@
 
 class LogCallback {
     public function __invoke($data) {
-        echo "Log Data: <br />";
+        echo "Objeto LogCallback <br />";
         var_dump($data);
     }
 }

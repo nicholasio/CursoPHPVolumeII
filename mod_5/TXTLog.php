@@ -1,5 +1,6 @@
 <?php
-class TXTLog extends Log {
+
+class TXTLog extends Log{
 
     public function writeLog() {
         $str = '';

@@ -6,40 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>Entrar no EChat</title>
+    <title>Entrar no Chat</title>
 
-    <link href="<?= ROOT_URL ?>assets/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="<?= ROOT_URL ?>/assets/css/bootstrap.css" rel="stylesheet">
 
-    <link href="<?= ROOT_URL ?>assets/css/login.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="<?= ROOT_URL ?>/assets/css/login.css" rel="stylesheet">
 
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 
 <body>
 
 <div class="container">
 
-
     <form class="form-signin" method="POST" action="<?= $this->UrlBuilder()->doAction('login', ['init_user' => true]); ?>">
-        <h2 class="form-signin-heading">Prencha seus dados</h2>
+        <h2 class="form-signin-heading">Preencha seus dados</h2>
         <?php
             $error = isset($this->params['error']) ? $this->params['error'] : false;
 
             if ( $error ) :
         ?>
-            <p class="bg-danger"><?= htmlentities($error); ?></p>
+                <p class="bg-danger"><?= htmlentities($error); ?></p>
         <?php endif; ?>
-        <label for="inputPassword" class="sr-only">Nickname: </label>
-        <input type="text" id="inputNickName" class="form-control" name="nickname" placeholder="Nickname" required>
+        <label for="inputNickname" class="sr-only">Nickname</label>
+        <input type="text" id="inputNickname" class="form-control" name="nickname" placeholder="Nickname" required autofocus>
         <label for="inputEmail" class="sr-only">E-mail</label>
-        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Endereço de e-mail" required autofocus>
-
-         <br />
+        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="E-mail" required>
+        <br />
         <button class="btn btn-lg btn-primary btn-block" type="submit">Bater Papo!</button>
     </form>
 

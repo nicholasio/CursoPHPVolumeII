@@ -1,17 +1,10 @@
 <?php
-/**
- * Roteiro
- *  1 - Criar Trait Price Utils e classe Product
- *  2 - Criar Trait Identity e adicinar na classe Product
- *  3 - Criar Interfaces e combinar com Traits
- *  4 - Mostrar Conflitos de traits
- */
 
 interface IPriceUtils {
-    public function calculateTax( $price );
+    public function calculateTax($price);
 }
 
-interface IIdentidy {
+interface IIdentyti {
     public function generateId();
 }
 
@@ -19,7 +12,7 @@ trait PriceUtils {
     private $taxrate = 17;
 
     public function calculateTax( $price ) {
-        return ( ( $this->taxrate/100 )  * $price );
+        return ( ( $this->taxrate/100) * $price);
     }
 
     public function methodA() {
@@ -28,22 +21,17 @@ trait PriceUtils {
 }
 
 trait Identity {
-    //Mostrar inicialmente como public
     protected function generateId() {
-        /*
-         * http://php.net/manual/pt_BR/function.uniqid.php
-         * uniqid() retorna um identificador unico prefixado
-         * baseado no tempo atual em milionésimos de segundo.
-         */
         return uniqid();
     }
 
     public function methodA() {
-        return "PriceUtils::methodB";
+        return "Identity::methodA";
     }
 }
 
-class Product implements IPriceUtils, IIdentidy{
+
+class Product implements IIdentyti, IPriceUtils{
     use PriceUtils, Identity {
         PriceUtils::methodA insteadof Identity;
         Identity::methodA as methodB;
@@ -58,8 +46,9 @@ class Product implements IPriceUtils, IIdentidy{
     public function getId() {
         return $this->id;
     }
+
 }
 
-function showProductPrice( IPriceUtils $product, $price ) {
+function showProductPrice( IPriceUtils $product, $price) {
     echo $product->calculateTax($price);
 }

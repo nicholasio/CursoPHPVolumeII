@@ -1,12 +1,12 @@
 <?php
-class BibliotecaIterator implements  Iterator {
+class BibliotecaIterator implements Iterator {
+
     private $pos = 0;
     private $livros;
 
     public function __construct( $livros ) {
         $this->livros = $livros;
     }
-
     /**
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Return the current element
@@ -17,6 +17,7 @@ class BibliotecaIterator implements  Iterator {
     {
         echo "Método current() <br />";
         return $this->livros[$this->pos];
+
     }
 
     /**
@@ -27,7 +28,7 @@ class BibliotecaIterator implements  Iterator {
      */
     public function next()
     {
-        echo "Método next <br />";
+        echo "Método next() <br />";
         ++$this->pos;
     }
 
@@ -39,7 +40,7 @@ class BibliotecaIterator implements  Iterator {
      */
     public function key()
     {
-        echo "Metodo key <br />";
+        echo "Método key() <br />";
         return $this->pos;
     }
 
@@ -52,7 +53,7 @@ class BibliotecaIterator implements  Iterator {
      */
     public function valid()
     {
-        echo "Método valid <br />";
+        echo "Método valid() <br />";
         return isset($this->livros[$this->pos]);
     }
 
@@ -69,11 +70,12 @@ class BibliotecaIterator implements  Iterator {
     }
 }
 
-class Biblioteca implements IteratorAggregate, Countable {
+class Biblioteca implements IteratorAggregate, Countable{
 
     public function fetchData() {
         return ["PHP Programming", "Python Programming", "C++ Primer Plus", "Compiladores"];
     }
+
 
     /**
      * (PHP 5 &gt;= 5.0.0)<br/>
@@ -86,7 +88,6 @@ class Biblioteca implements IteratorAggregate, Countable {
     {
         return new BibliotecaIterator($this->fetchData());
     }
-
 
     /**
      * (PHP 5 &gt;= 5.1.0)<br/>

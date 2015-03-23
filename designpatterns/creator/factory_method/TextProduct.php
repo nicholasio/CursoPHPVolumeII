@@ -1,12 +1,11 @@
 <?php
 
-include_once('IProduct.php');
 
-class TextProduct implements  IProduct {
-	private $mfgProduct;
+class TextProduct implements IProduct {
 
-	public function getProperties() {
-		$this->mfgProduct = 'This is Text.';
-		return $this->mfgProduct;
-	}
+
+    public function getProperties()
+    {
+        return "This is Text.";
+    }
 }

@@ -1,10 +1,10 @@
 <?php
 
 
-class Archer extends Unit{
+class LaserCannon extends Unit{
 
     public function bombardStrength()
     {
-        return 4;
+        return 44;
     }
 }

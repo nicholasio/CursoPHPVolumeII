@@ -1,5 +1,8 @@
 {
-	"require" : {
-		"phpunit/phpunit" : "4.7.x-dev"
-	}
+  "require" : {
+    "phpunit/phpunit" : "4.7.x-dev"
+  },
+  "autoload" : {
+    "psr-4" : {"Unittests\\" : "app/" }
+  }
 }

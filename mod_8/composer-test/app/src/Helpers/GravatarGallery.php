@@ -1,5 +1,4 @@
 <?php
-
 namespace ComposerTest\Helpers;
 
 

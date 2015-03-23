@@ -1,11 +1,8 @@
 <?php
-
-
-abstract class TileDecorator extends Tile{
-
+abstract class TileDecorator extends Tile {
     protected $tile;
 
-    public function __construct( Tile $tile ) {
+    public function __construct(Tile $tile) {
         $this->tile = $tile;
     }
 }

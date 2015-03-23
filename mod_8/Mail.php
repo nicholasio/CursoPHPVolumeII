@@ -1,22 +1,19 @@
 <?php
 
-
 class Mail extends PHPMailer {
+
     public function __construct() {
         parent::__construct();
 
+        $this->isSMTP();                                      // Set mailer to use SMTP
+        $this->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+        $this->SMTPAuth = true;                               // Enable SMTP authentication
+        $this->Username = 'nicholas@iotecnologia.com.br';                 // SMTP username
+        $this->Password = '';                           // SMTP password
+        $this->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $this->Port = 587;                                    // TCP port to connect to
 
-        $this->isSMTP();
-        $this->Host = 'smtp.gmail.com';
-        $this->SMTPAuth = true;
-        $this->Username = 'nicholas@iotecnologia.com.br';
-        $this->Password = 'SUA SENHA';
-        $this->SMTPSecure = 'tls';
-        $this->Port = 587;
-
-        $this->From = 'from@example.com';
-        $this->FromName = 'Mailer';
-
-        $this->isHTML(true);
+        $this->From = 'nicholas@iotecnologia.com.br';
+        $this->FromName = 'Nícholas André';
     }
 }
