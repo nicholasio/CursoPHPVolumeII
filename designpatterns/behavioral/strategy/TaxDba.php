@@ -1,6 +1,5 @@
 <?php
 
-
 class TaxDba implements ITax {
 
     public function calculate(Employee $emp)

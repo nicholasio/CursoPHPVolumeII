@@ -13,20 +13,22 @@
  * Padrão de Projeto Observer
  */
 echo "<h2>Observer</h2>";
+
 spl_autoload_register(function($class) {
     include( $class . '.php' );
 });
 
-$log = new LogCallback();
-Event::registerCallback('save', new LogCallback());
-
 Event::registerCallback('save', function($data) {
-    echo "Função anônima associada ao evento save";
+    echo "A operação save foi finalizada <br />";
+    var_dump($data);
+    echo "<br />";
 });
 
-$record = new DataRecord();
+Event::registerCallback('save', new LogCallback() );
 
+$record = new DataRecord();
 $record->save();
+
 
 
 

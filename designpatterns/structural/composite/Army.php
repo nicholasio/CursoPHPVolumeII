@@ -1,32 +1,32 @@
 <?php
 
 
-class Army extends Unit{
-    private $units = [];
+class Army extends Unit {
 
-    public function addUnit( Unit $unit) {
-        if ( in_array($unit, $this->units, true) ) {
-            return;
-        }
+    private $units;
 
-        $this->units[] = $unit;
+    public function __construct() {
+        $this->units = new SplObjectStorage();
     }
+    public function addUnit(Unit $unit)
+    {
+        if ( ! $this->units->contains($unit) )
+            $this->units->attach($unit);
 
-    public function bombardStrength() {
-        $ret = 0;
-        foreach( $this->units as $unit ) {
-            $ret += $unit->bombardStrength();
-        }
-
-        return $ret;
     }
 
     public function removeUnit(Unit $unit)
     {
-        $this->units = array_udiff($this->units, array( $unit),
-            function($a, $b) {
-                return $a === $b ? 0 : 1;
-            }
-        );
+        $this->units->detach($unit);
+    }
+
+    public function bombardStrength()
+    {
+        $power = 0;
+        foreach($this->units as $unit) {
+            $power += $unit->bombardStrength();
+        }
+
+        return $power;
     }
 }

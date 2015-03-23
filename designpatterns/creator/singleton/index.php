@@ -17,13 +17,11 @@ include('Singleton.php');
 include('Database.php');
 
 $db = Database::getInstance();
-
 var_dump($db);
 
-$db = Database::getInstance();
 
-var_dump($db);
-
+$db2 = Database::getInstance();
+var_dump($db2);
 
 ?>
 </body>

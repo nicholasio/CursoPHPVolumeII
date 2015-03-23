@@ -13,24 +13,29 @@
  * Padrão de Projeto Composite
  */
 echo "<h2>Composite</h2>";
+
 spl_autoload_register(function($class) {
     include( $class . '.php' );
 });
 
 $main_army = new Army();
-
 $main_army->addUnit( new Archer() );
-$main_army->addUnit( new LaserCannonUnit() );
+$main_army->addUnit( new LaserCannon() );
+$main_army->addUnit( new Archer() );
 
 $sub_army = new Army();
-
+$sub_army->addUnit( new Archer() );
 $sub_army->addUnit( new Archer() );
 $sub_army->addUnit( new Archer() );
 $sub_army->addUnit( new Archer() );
 
 $main_army->addUnit( $sub_army );
 
-echo "A força dos meus exércitos são: {$main_army->bombardStrength()}";
+echo "A força total do exército é: " . $main_army->bombardStrength() ."<br />";
+
+
+
+
 
 ?>
 </body>

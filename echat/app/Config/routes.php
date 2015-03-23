@@ -4,39 +4,37 @@ use \EChat\Router\Route;
 $approuter = \EChat\Registry::get('approuter');
 
 $approuter->addRoute(
-    new Route( [
-        'match' => ['index', ''],
-        'action' => 'index'
-    ] )
+    new Route(
+        [
+            'match' => ['index', ''],
+            'action' => 'index'
+        ]
+    )
 );
 
 $approuter->addRoute(
-    new Route( [
-        'match' => ['login'],
-        'action' => 'login'
-    ] )
+    new Route(
+        [
+            'match' => ['login'],
+            'action' =>  'login'
+        ]
+    )
 );
 
 $approuter->addRoute(
-  new Route( [
-          'match' => ['user'],
-          'action' => 'user'
-      ]
-  )
-);
-
-$approuter->addRoute(
-  new Route( [
+  new Route(
+      [
           'match' => ['message'],
           'action' => 'message'
       ]
   )
 );
 
-/*
 $approuter->addRoute(
-  new GETRoute( [
-      'match' => 'chat',
-      'action' => 'ChatAction'
-  ] )
-);*/
+    new Route(
+        [
+            'match' => ['user'],
+            'action' => 'user'
+        ]
+    )
+);

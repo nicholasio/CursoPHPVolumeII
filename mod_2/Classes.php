@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Class Pessoa
- * Isto é a definição de uma classe
- */
 class Pessoa {
     public $idade;
     public $nome;
@@ -18,7 +14,7 @@ class PessoaAttrMet {
     public static $qtdPessoas = 0;
 
     public function showDesc() {
-        echo "{$this->nome} tem {$this->idade} anos, trabalha como {$this->profissao} e ganha {$this->salario}";
+        echo "{$this->nome} tem {$this->idade} anos, trabalha com {$this->profissao} e ganha {$this->salario}";
     }
 
     public function getIdade() {
@@ -26,31 +22,24 @@ class PessoaAttrMet {
     }
 
     public function setIdade($idade) {
-        $this->idade = $idade;
+        if ( $this->idade >= 0 )
+            $this->idade = $idade;
     }
 
-    /**
-     * Aula 3 - Cnstrutores e Destrutores
-     * Construtor
-     */
-    public function __construct($nome = NULL) {
-        $this->idade = 10;
+    public function __construct($nome = NULL, $idade = NULL) {
+        $this->idade = $idade;
         $this->nome = $nome;
         $this->profissao = "Administrador";
-        $this->salario = "12 reais por mês";
+        $this->salario = "700";
 
-        echo "<h3> Construindo....</h3>";
+        echo "<h3>Construindo...</h3>";
 
-        //Aula 4- Atributos estáticos
         self::$qtdPessoas++;
+
     }
 
 
-    /**
-     * Aula 3 - Cnstrutores e Destrutores
-     * Destrutor
-     */
     public function __destruct() {
-        echo "<h4>Destruindo {$this->nome}.....</h4>";
+        echo "<h4>Destruindo {$this->nome}</h4>";
     }
 }

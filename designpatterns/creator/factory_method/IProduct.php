@@ -1,4 +1,4 @@
 <?php
 interface IProduct {
-	public function getProperties();
+    public function getProperties();
 }

@@ -15,10 +15,10 @@
 echo "<h2>Registry</h2>";
 include('Registry.php');
 
-class DBReadConnecton {};
-class DBWriteConnection {};
+class DBReadConnection{}
+class DBWriteConnection{}
 
-Registry::add(new DBReadConnecton(), 'dbread');
+Registry::add(new DBReadConnection(), 'dbread');
 Registry::add(new DBWriteConnection(), 'dbwrite');
 
 $dbread = Registry::get('dbread');
@@ -26,6 +26,10 @@ $dbwrite = Registry::get('dbwrite');
 
 var_dump($dbread);
 var_dump($dbwrite);
+
+
+
+
 
 ?>
 </body>

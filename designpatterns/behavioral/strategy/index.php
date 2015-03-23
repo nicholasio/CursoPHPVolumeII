@@ -13,18 +13,20 @@
  * Padrão de Projeto Strategy
  */
 echo "<h2>Strategy</h2>";
+
 spl_autoload_register(function($class) {
     include( $class . '.php' );
 });
 
-$cppdev = new Employee(Employee::DEV, 2500);
-$mysqldba = new Employee(Employee::DBA, 3800);
-$manager = new Employee(Employee::MANAGER, 8000);
-
+$cppdev = new Employee(new TaxDev(), 2500);
+$mysqldba = new Employee(new TaxDba(), 3800);
+$manager = new Employee(new TaxManager(), 8000);
 
 echo "Salário Líquido Programador: " . $cppdev->getLiquidSalary() . "<br />";
 echo "Salário Líquido DBA: " . $mysqldba->getLiquidSalary() . "<br />";
 echo "Salário Líquido Gerente:" . $manager->getLiquidSalary() . "<br />";
+
+
 
 ?>
 </body>

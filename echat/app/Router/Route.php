@@ -1,59 +1,44 @@
 <?php
 namespace EChat\Router;
-use \EChat\Exceptions\RouteException as RouteException;
+use EChat\Exceptions\RouteException;
 
-/**
- * Define uma rota simples. Casa um conjunto de strings e mapeia a uma determinada ActionClass
- * @package EChat\Router
- * @author Nícholas André<nicholas@iotecnologia.com.br>
- */
 class Route implements IRoute {
     private $actionsKey;
     private $actionClass;
 
-    public function __construct(Array $params ) {
+    public function __construct(Array $params) {
         if ( empty($params) )
-            throw new RouteException("Rota inválida");
+            throw new RouteException("Rota Inválida");
 
         $this->setRoute($params);
     }
 
-    /**
-     * @return Array
-     */
-    public function getActionsKey()
+    public function setRoute(Array $params)
     {
-        return $this->actionsKey;
+        if ( !isset($params['match']) || !isset($params['action']) ) {
+            throw new RouteException("Faltando parâmetros para a rota");
+        }
+
+        if ( ! is_array($params['match']) ) {
+            throw new RouteException("match deve ser um array");
+        }
+
+        $this->actionsKey = $params['match'];
+        $className = '\\EChat\\Actions\\' . ucfirst($params['action']) . 'Action';
+
+        if ( ! class_exists($className) ) {
+            throw new RouteException("Classe $className não existe");
+        }
+
+        $this->actionClass = $className;
     }
 
-    /**
-     * @return mixed
-     */
     public function getActionClass()
     {
         return $this->actionClass;
     }
 
-    /**
-     * 'match' indica qual valor da get_var casar e action indica o nome da action.
-     * O seguinte padrão deverá ser seguido: A Classe IndexAction tem o nome de action igual a index e assim por diante
-     * @param array $params
-     * @throws RouteException
-     */
-    public function setRoute(Array $params)
-    {
-        if( !isset($params['match']) || !isset($params['action']) )
-            throw new RouteException("Faltando parâmetros para a rota");
-
-        if ( ! is_array($params['match']) )
-            throw new RouteException("match deve ser um array");
-
-        $this->actionsKey    = $params['match'];
-        $className = '\\EChat\\Actions\\' . ucfirst($params['action']) . 'Action';
-
-        if ( ! class_exists($className) )
-            throw new RouteException("Classe $className não encontrada");
-
-        $this->actionClass = $className;
+    public function getActionsKey() {
+        return $this->actionsKey;
     }
 }

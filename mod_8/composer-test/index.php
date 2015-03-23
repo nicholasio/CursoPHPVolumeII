@@ -1,15 +1,15 @@
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once( __DIR__ . '/vendor/autoload.php');
 
 $gravatar = new Gravatar\UrlBuilder();
 $gravatar->useHttps(true);
+
 $img = $gravatar->avatar('nicholas@iotecnologia.com.br');
 
+echo '<img src="' . $img . '" />';
 
-echo '<img src="' . $img. '" />';
-
-$ImgGravatarBuilder = new ComposerTest\ImgGravatarBuilder();
-var_dump($ImgGravatarBuilder);
+$imgGravatarBuilder = new ComposerTest\ImgGravatarBuilder();
+var_dump($imgGravatarBuilder);
 
 $gravatarGallery = new ComposerTest\Helpers\GravatarGallery();
 var_dump($gravatarGallery);

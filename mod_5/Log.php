@@ -1,10 +1,7 @@
 <?php
-include('ILog.php');
-abstract class Log implements ILog {
-    /**
-     * @var $logData
-     * Armazena o log em méotira
-     */
+
+abstract class Log implements ILog{
+
     protected $logData = array();
 
     public function addLogEntry($logString) {
@@ -16,11 +13,9 @@ abstract class Log implements ILog {
             unset($this->logData[$index]);
     }
 
-    abstract  public function writeLog();
+    abstract public function writeLog();
 
-    public function saveToFile() {
-        $logs = $this->writeLog();
-
-        //Função para salvar no disco
+    public function saveLog($filename) {
+        echo "Salvando o log em $filename";
     }
 }
