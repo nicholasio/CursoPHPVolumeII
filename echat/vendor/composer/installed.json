@@ -1,0 +1,103 @@
+[
+    {
+        "name": "simplon/mysql",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fightbulc/simplon_mysql.git",
+            "reference": "7ea5c50626917885c639a43a0794df10ba73c6a0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fightbulc/simplon_mysql/zipball/7ea5c50626917885c639a43a0794df10ba73c6a0",
+            "reference": "7ea5c50626917885c639a43a0794df10ba73c6a0",
+            "shasum": ""
+        },
+        "require": {
+            "ext-pdo": "*",
+            "php": ">=5.3"
+        },
+        "time": "2015-02-15 13:38:50",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Simplon\\Mysql\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Tino Ehrich",
+                "email": "tino@bigpun.me",
+                "role": "developer"
+            }
+        ],
+        "description": "Simplon MySQL Library",
+        "homepage": "https://github.com/fightbulc/simplon_mysql",
+        "keywords": [
+            "db",
+            "manager",
+            "mysql",
+            "pdo"
+        ]
+    },
+    {
+        "name": "gravatarphp/gravatar",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/gravatarphp/gravatar.git",
+            "reference": "add5e9ad4fa90838bc21fc5a4dd8082cf8f4bbb2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/gravatarphp/gravatar/zipball/add5e9ad4fa90838bc21fc5a4dd8082cf8f4bbb2",
+            "reference": "add5e9ad4fa90838bc21fc5a4dd8082cf8f4bbb2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4"
+        },
+        "require-dev": {
+            "henrikbjorn/phpspec-code-coverage": "~1.0",
+            "phpspec/phpspec": "~2.1"
+        },
+        "time": "2015-01-31 10:47:36",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.1-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Gravatar\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Márk Sági-Kazár",
+                "email": "mark.sagikazar@gmail.com"
+            }
+        ],
+        "description": "Gravatar URL builder which is most commonly called as a Gravatar library",
+        "homepage": "http://gravatarphp.com",
+        "keywords": [
+            "avatar",
+            "gravatar",
+            "image",
+            "profile"
+        ]
+    }
+]
